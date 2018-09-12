@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>BetsApp</title>
+</head>
+
+<body>
+<p>
+<h1>BetsApp</h1>
+</p>
+
+<div th:object="${match}" th:remove="tag">
+    <ul th:if="${#fields.hasErrors('*')}">
+        <li th:each="e: ${#fields.errors('*')}" th:text="${e}"></li>
+    </ul>
+</div>
+
+<div class="container">
+    <form action="#" th:action="@{/matches}" th:object="${match}" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="flocal">Local</label>
+                <input id="flocal" type="text" th:field="*{local}" th:errorclass="fieldError">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="fvisitor">Visitor</label>
+                <input id="fvisitor" type="text" th:field="*{visitor}">
+                <!-- <small th:if="${#fields.hasErrors('visitor')}"
+                  th:errors="*{visitor}"></small> -->
+            </div>
+
+            <div class="form-group col-md-4">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="relLocal">Local wins ratio</label>
+                <input type="number" th:field="*{relLocal}">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="relVisitor">Visitor wins ratio</label>
+                <input type="number" th:field="*{relVisitor}">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="relDraw">Draw ratio</label>
+                <input type="number" th:field="*{relDraw}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Open date time</label>
+                <input type="datetime-local" th:field="*{open}">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Close date time</label>
+                <input type="datetime-local" th:field="*{close}">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info">Save match</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>

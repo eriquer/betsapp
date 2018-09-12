@@ -17,7 +17,7 @@ public class MatchRepository {
     @SuppressWarnings("unchecked")
     @Transactional(readOnly=true)
     public List<MatchEntity> findAll() {
-        return em.createQuery("from Match").getResultList();
+        return em.createQuery("from MatchEntity").getResultList();
     }
 
     public MatchEntity findById(Long id) {

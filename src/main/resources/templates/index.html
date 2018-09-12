@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>BetsApp</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Jquery ready
+    });
+
+    function deleteMatch() {
+        alert("Delete match");
+    }
+</script>
+
+<body>
+    <h1>BetsApp</h1>
+
+    <section style="margin-top:35px">
+        <div th:if="${matches.isEmpty()}">
+            No results
+            <div>
+                <a href="/form" class="btn btn-info" role="button">Add</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top:35px">
+         <div class="container" th:if="${!matches.isEmpty()}">
+                 <div>
+                    <a href="/form" class="btn btn-info" role="button">Add</a>
+                 </div>
+
+                <br>
+
+                 <div class="table-responsive">
+                 <table class="table">
+                     <thead>
+                     <tr>
+                         <td>Id</td>
+                         <td>Local</td>
+                         <td>Relation</td>
+                         <td>Visitor</td>
+                         <td>Relation</td>
+                         <td>Draw</td>
+                         <td>Open</td>
+                         <td>Close</td>
+                         <td>Actions</td>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr th:each="b: ${matches}">
+                         <td th:text="${b.id}"></td>
+                         <td th:text="${b.local}"></td>
+                         <td class="highl">
+                             <a th:href="@{/local/} + ${b.id}" th:text="'1/' + ${b.relLocal}"></a>
+                         </td>
+                         <td th:text="${b.visitor}"></td>
+                         <td>
+                             <a th:href="@{/visitor/} + ${b.id}" th:text="'1/' + ${b.relVisitor}"></a>
+                         </td>
+                         <td>
+                             <a th:href="@{/draw/} + ${b.id}" th:text="'1/' + ${b.relDraw}"></a>
+                         </td>
+                         <td th:text="${#temporals.format(b.open,'dd/MM/yyyy HH:mm')}"></td>
+                         <td th:text="${#temporals.format(b.close,'dd/MM/yyyy HH:mm')}"></td>
+
+                         <td>
+                             <!-- <button type="button" class="btn btn-sm btn-outline-danger">Update</button> -->
+                             <button id="buttonDelete" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                         </td>
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>
+        </div>
+     </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

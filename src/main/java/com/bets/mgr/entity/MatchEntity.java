@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -18,9 +19,11 @@ public class MatchEntity implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
+    @NotEmpty
     @Column(name = "local", nullable = false)
     private String local;
 
+    @NotEmpty
     @Column(name = "visitor", nullable = false)
     private String visitor;
 
@@ -37,6 +40,7 @@ public class MatchEntity implements Serializable {
     @Column(name = "open", nullable = false)
     private LocalDateTime open;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "close", nullable = false)
     private LocalDateTime close;
 
