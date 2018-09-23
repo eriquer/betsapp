@@ -8,13 +8,15 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "MGR_ROLES")
-public class RoleEntity implements Serializable {
+@Table(name = "USR_ROLES")
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     private Long id;
+
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     @NotEmpty
     @Column(name = "name", nullable = false)

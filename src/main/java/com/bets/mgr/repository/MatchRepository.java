@@ -1,6 +1,6 @@
 package com.bets.mgr.repository;
 
-import com.bets.mgr.entity.MatchEntity;
+import com.bets.mgr.entity.Match;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,20 +16,22 @@ public class MatchRepository {
 
     @SuppressWarnings("unchecked")
     @Transactional(readOnly=true)
-    public List<MatchEntity> findAll() {
-        return em.createQuery("from MatchEntity").getResultList();
+    public List<Match> findAll() {
+
+        return em.createQuery("from Match").getResultList();
     }
 
-    public MatchEntity findById(Long id) {
-        return em.find(MatchEntity.class, id);
+    public Match findById(Long id) {
+
+        return em.find(Match.class, id);
     }
 
     @Transactional
-    public void saveOrUpdate(MatchEntity matchEntity) {
-        if (matchEntity.getId() != null && matchEntity.getId() > 0) {
-            em.merge(matchEntity);
+    public void saveOrUpdate(Match match) {
+        if (match.getId() != null && match.getId() > 0) {
+            em.merge( match );
         } else {
-            em.persist(matchEntity);
+            em.persist( match );
         }
     }
 }

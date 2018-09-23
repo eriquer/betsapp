@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -22,7 +24,13 @@
 </script>
 
 <body>
-    <h1>BetsApp</h1>
+<p sec:authorize="isAuthenticated()">
+    User: <span sec:authentication="name"></span> | Roles: <span sec:authentication="principal.authorities"></span>
+</p>
+
+<h1>BetsApp</h1>
+
+    <div th:if="${success != null}" th:text="${success}"></div>
 
     <section style="margin-top:35px">
         <div th:if="${matches.isEmpty()}">
@@ -80,6 +88,12 @@
                      </tr>
                      </tbody>
                  </table>
+             </div>
+
+             <div>
+                 <form th:action="@{/logout}" method="post">
+                     <button type="submit" class="btn btn-info">Logout</button>
+                 </form>
              </div>
         </div>
      </section>

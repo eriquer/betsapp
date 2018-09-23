@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "MGR_MATCHES")
-public class MatchEntity implements Serializable {
+public class Match implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

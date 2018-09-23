@@ -1,10 +1,9 @@
 package com.bets.mgr.service;
 
-import com.bets.mgr.entity.MatchEntity;
+import com.bets.mgr.entity.Match;
 import com.bets.mgr.model.MatchResult;
 import com.bets.mgr.repository.MatchRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class MatchService {
     @Autowired
     private MatchRepository matchRepository;
 
-    public List<MatchEntity> findAllMatchs() {
+    public List<Match> findAllMatchs() {
         return matchRepository.findAll();
     }
 
@@ -28,17 +27,17 @@ public class MatchService {
             return;
         }
 
-        MatchEntity matchEntity = matchRepository.findById(id);
-        if (matchEntity == null) {
+        Match match = matchRepository.findById(id);
+        if (match == null) {
             return;
         }
 
-        matchEntity.setResult(winner);
-        matchRepository.saveOrUpdate(matchEntity);
+        match.setResult(winner);
+        matchRepository.saveOrUpdate( match );
     }
 
-    public void saveMatch(MatchEntity matchEntity) {
-        matchRepository.saveOrUpdate(matchEntity);
+    public void saveMatch(Match match) {
+        matchRepository.saveOrUpdate( match );
     }
 
 }
