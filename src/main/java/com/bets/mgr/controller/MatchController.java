@@ -24,7 +24,7 @@ public class MatchController {
     @Autowired
     private MatchService matchService;
 
-    @Secured({ "ROLE_ADMIN", "ROLE_USER" })
+    @Secured( {"ROLE_USER"} )
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String findAll(Model model) {
         model.addAttribute("matches", matchService.findAllMatchs());
@@ -60,7 +60,7 @@ public class MatchController {
         return "redirect:/";
     }
 
-    @Secured( {"ROLE_USER"} )
+    @Secured( {"ROLE_ADMIN"} )
     @RequestMapping(value = "/matches", method = RequestMethod.POST)
     public String save(@Valid Match match, BindingResult result) {
 
@@ -70,16 +70,8 @@ public class MatchController {
             return "form";
         }
 
-        matchService.saveMatch(match);
+        matchService.saveMatch( match );
         return "redirect:/";
     }
 
-    @Secured( {"ROLE_REPORT"} )
-    @RequestMapping(value = "/matchess", method = RequestMethod.GET)
-    public String showAlert() {
-
-        log.info("Alert, you are a reporter");
-
-       return "alert";
-    }
 }

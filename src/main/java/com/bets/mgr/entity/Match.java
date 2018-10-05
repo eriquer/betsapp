@@ -2,6 +2,8 @@ package com.bets.mgr.entity;
 
 import com.bets.mgr.model.MatchResult;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,7 +11,6 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "MGR_MATCHES")
 public class Match implements Serializable {
@@ -46,6 +47,78 @@ public class Match implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     private MatchResult result;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getVisitor() {
+        return visitor;
+    }
+
+    public void setVisitor(String visitor) {
+        this.visitor = visitor;
+    }
+
+    public int getRelLocal() {
+        return relLocal;
+    }
+
+    public void setRelLocal(int relLocal) {
+        this.relLocal = relLocal;
+    }
+
+    public int getRelVisitor() {
+        return relVisitor;
+    }
+
+    public void setRelVisitor(int relVisitor) {
+        this.relVisitor = relVisitor;
+    }
+
+    public int getRelDraw() {
+        return relDraw;
+    }
+
+    public void setRelDraw(int relDraw) {
+        this.relDraw = relDraw;
+    }
+
+    public LocalDateTime getOpen() {
+        return open;
+    }
+
+    public void setOpen(LocalDateTime open) {
+        this.open = open;
+    }
+
+    public LocalDateTime getClose() {
+        return close;
+    }
+
+    public void setClose(LocalDateTime close) {
+        this.close = close;
+    }
+
+    public MatchResult getResult() {
+        return result;
+    }
+
+    public void setResult(MatchResult result) {
+        this.result = result;
+    }
 }
 
 

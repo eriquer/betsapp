@@ -5,13 +5,8 @@ insert into MGR_MATCHES(id, local, rel_local, visitor, rel_visitor, rel_draw, op
 
 insert into USR_USERS (username, password, enabled) values('admin', '$2a$04$.50lAnVItLwL0hIVUv2s/e2Ty1rGIXBKZ12AWozjpekF8fABTumcK', 1);
 insert into USR_USERS (username, password, enabled) values('user', '$2a$04$.50lAnVItLwL0hIVUv2s/e2Ty1rGIXBKZ12AWozjpekF8fABTumcK',1 );
-insert into USR_USERS (username, password, enabled) values('edrf', '$2a$04$.50lAnVItLwL0hIVUv2s/e2Ty1rGIXBKZ12AWozjpekF8fABTumcK',1 );
 
 insert into USR_ROLES (user_id, name) values(1, 'ROLE_ADMIN');
-
 insert into USR_ROLES (user_id, name) values(2, 'ROLE_USER');
 insert into USR_ROLES (user_id, name) values(2, 'ROLE_ADMIN');
 insert into USR_ROLES (user_id, name) values(2, 'ROLE_REPORT');
-
-insert into USR_ROLES (user_id, name) values(3, 'ROLE_REPORT');
-

@@ -84,23 +84,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .getUserDetailsService();
     }
 
-    /*
+
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/static/**").permitAll()
-                .antMatchers("/form/**", "/matches/**").hasAnyRole("ADMIN")
-                .anyRequest().authenticated()
+            .antMatchers("/static/**")
+            .permitAll()
             .and()
-            .formLogin().successHandler(loginSuccessHandler)
-                .loginPage("/login").permitAll()
+            .formLogin()
+            .successHandler(loginSuccessHandler)
+            .loginPage("/login")
+            .permitAll()
             .and()
-                .logout().permitAll()
+            .logout().permitAll()
             .and()
-                .exceptionHandling();
+            .exceptionHandling()
+            .accessDeniedPage("/error403");
     }
-    */
+    /*
 
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -115,5 +117,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .exceptionHandling().accessDeniedPage("/403");
     }
+
+
+   */
 
 }

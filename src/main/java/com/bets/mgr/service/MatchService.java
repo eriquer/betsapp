@@ -23,6 +23,7 @@ public class MatchService {
     }
 
     public void setWinner(Long id, MatchResult winner) {
+
         if (id == null) {
             return;
         }
@@ -37,6 +38,7 @@ public class MatchService {
     }
 
     public void saveMatch(Match match) {
+
         matchRepository.saveOrUpdate( match );
     }
 

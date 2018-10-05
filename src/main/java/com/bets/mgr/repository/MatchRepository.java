@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class MatchRepository {
@@ -24,6 +25,11 @@ public class MatchRepository {
     public Match findById(Long id) {
 
         return em.find(Match.class, id);
+    }
+
+    // Como referencia para devolver un Optional
+    public Optional<Match> findByIdOptional(Long id) {
+        return Optional.of(em.find(Match.class, id));
     }
 
     @Transactional
