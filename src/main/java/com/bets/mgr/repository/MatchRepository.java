@@ -29,7 +29,7 @@ public class MatchRepository {
 
     // Como referencia para devolver un Optional
     public Optional<Match> findByIdOptional(Long id) {
-        return Optional.of(em.find(Match.class, id));
+        return Optional.ofNullable(em.find(Match.class, id));
     }
 
     @Transactional
